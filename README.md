@@ -2,6 +2,14 @@
 
 Polskojęzyczny prototyp gry przeglądarkowej dla dzieci w wieku 8–9 lat, oparty na opisie i wizerunku postaci przesłanych przez użytkownika. Osiem przystanków, po jednej zagadce do każdego, wirtualny paszport i odznaka do pobrania. Bez kont, limitu czasu i kar. Miejsca można wybierać w dowolnej kolejności.
 
+## Zagraj bez instalacji
+
+1. [Pobierz gotową paczkę ZIP](downloads/duszek-lubuszek-www.zip) (na stronie pliku w GitHub wybierz „Download raw file”).
+2. Rozpakuj paczkę do dowolnego folderu.
+3. Otwórz zawarty w niej `index.html` dwuklikiem w przeglądarce.
+
+Gotowa paczka zawiera **jeden samodzielny HTML**: style, kod i grafika są osadzone w środku. Do gry nie potrzeba serwera ani połączenia z internetem. W ZIP-ie jest również instrukcja `JAK_URUCHOMIC.txt`.
+
 ## Miejsca
 
 1. Zamek Książąt Lubomirskich w Lubniewicach — żaglówka.
@@ -15,7 +23,7 @@ Polskojęzyczny prototyp gry przeglądarkowej dla dzieci w wieku 8–9 lat, opar
 
 Każda poprawna odpowiedź przyznaje jedną wirtualną pieczątkę. Po zebraniu ośmiu można zapisać odznakę jako samodzielny plik SVG z osadzoną grafiką postaci. Wirtualne pieczątki nie potwierdzają wizyt w zabytkach i nie uprawniają do odbioru maskotki w rzeczywistej akcji. Informacja o prawdziwym szlaku jest dostępna w grze pod przyciskiem „Poznaj prawdziwy szlak”.
 
-## Uruchomienie
+## Praca nad kodem źródłowym
 
 Wymagany Node.js 20 lub nowszy. Nie ma pakietów do zainstalowania ani wymaganych sekretów.
 
@@ -31,7 +39,15 @@ npm test
 npm run build
 ```
 
-`npm test` uruchamia cztery testy: komplet miejsc i dowolną kolejność, brak punktów za błędne/powtórne odpowiedzi, wybór kolejnego nieodwiedzonego miejsca oraz walidację zapisu. `dist/` zawiera kompletną statyczną wersję gry wraz z grafikami, do hostowania w katalogu głównym domeny. `npm start` udostępnia pliki źródłowe, nie katalog `dist/`.
+`npm test` uruchamia cztery testy: komplet miejsc i dowolną kolejność, brak punktów za błędne/powtórne odpowiedzi, wybór kolejnego nieodwiedzonego miejsca oraz walidację zapisu. `npm run build` tworzy samodzielny `dist/index.html` z osadzonym CSS, JavaScriptem i grafiką. Plik można otworzyć lokalnie albo udostępnić w dowolnym podkatalogu hostingu statycznego. `npm start` udostępnia pliki źródłowe, nie katalog `dist/`.
+
+Aby odświeżyć paczkę ZIP po zmianach:
+
+```sh
+npm run package
+```
+
+Pakowanie wymaga dodatkowo Pythona 3 i używa wyłącznie jego standardowej biblioteki ZIP. Wynik: `downloads/duszek-lubuszek-www.zip`. Źródłowy `index.html` służy do pracy przez serwer developerski; wersję do otwierania dwuklikiem generuje polecenie build.
 
 ## Sprawdzenie w przeglądarce
 
@@ -42,6 +58,7 @@ npm run build
 5. Odśwież stronę: postęp i wybrane miejsce zostają zachowane. Wybieraj miejsca z górnej nawigacji oraz z paszportu.
 6. Zbierz komplet, pobierz i otwórz odznakę. Sprawdź instrukcję gry i informację o szlaku. Anuluj restart, a potem potwierdź go.
 7. Sprawdź widok tabletu i telefonu. Obszary dotykowe przedmiotów mają co najmniej 44 × 44 piksele CSS.
+8. Sprawdź gotowy HTML przy wyłączonej sieci: Duszek, plansze, zagadki i pobieranie odznaki muszą działać bez pobierania dodatkowych plików. Na hostingu sprawdź również adres z podkatalogiem.
 
 Gra działa też, gdy localStorage jest zablokowany (bez trwałego zapisu). Postęp nowej wersji znajduje się pod kluczem `duszek-lubuszek-trail-v2`; zapis poprzedniego prototypu pozostaje nietknięty. Czytanie używa opcjonalnego Web Speech API. Polski głos zależy od przeglądarki i urządzenia; nie jest dostarczany z grą. Dźwięk jest domyślnie wyłączony. Brak zewnętrznych zasobów wymaganych do rozgrywki.
 
@@ -57,4 +74,4 @@ Gra działa też, gdy localStorage jest zablokowany (bez trwałego zapisu). Post
 
 [Pobierz ZIP z gotową grą](downloads/duszek-lubuszek-www.zip). Na stronie pliku w GitHub wybierz przycisk pobierania (Download raw file).
 
-ZIP zawiera statyczną wersję tej edycji gry: `index.html`, CSS, JavaScript i grafikę Duszka. Po rozpakowaniu wgraj zawartość do katalogu głównego hostingu stron statycznych. Publikacja kodu w repozytorium nie włącza automatycznie strony WWW.
+ZIP zawiera samodzielny `index.html` oraz instrukcję. Po rozpakowaniu otwórz HTML dwuklikiem albo wgraj go do wybranego katalogu hostingu stron statycznych. Publikacja kodu w repozytorium nie włącza automatycznie strony WWW.

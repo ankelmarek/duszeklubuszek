@@ -1,4 +1,4 @@
-import { mascot, sceneSvg, icon, landmarkIcon, stampSvg } from './scenes.js';
+import { mascot, mascotSrc, sceneSvg, icon, landmarkIcon, stampSvg } from './scenes.js';
 import { stages, freshState, restoreState, totalFound, discover, nextUnvisited } from './game.js';
 
 const $ = id => document.getElementById(id);
@@ -199,13 +199,14 @@ $('confirm-restart').addEventListener('click', () => {
   $('riddle').focus({ preventScroll: true });
 });
 
-function badgeSvg(download = false, mascotHref = '/assets/duszek.png') {
+function badgeSvg(download = false, mascotHref = mascotSrc) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 ${download ? '480' : '400'}"><path d="m145 275-33 110 69-25 35 40 15-110m15-15 43 110-67-25-34 40-25-110" fill="#bd9b52"/><path d="m145 275-24 93 54-24 27 36 14-90m30-15 33 93-55-24-25 36-20-90" fill="#e2c374"/><circle cx="200" cy="177" r="155" fill="#e6e9b4" stroke="#a9b559" stroke-width="3"/><circle cx="200" cy="177" r="139" fill="#f9f8df" stroke="#a9b559" stroke-width="2" stroke-dasharray="3 7"/><image href="${mascotHref}" x="103" y="45" width="194" height="183"/><text x="200" y="263" text-anchor="middle" font-family="Georgia,serif" font-size="25" fill="#3d6046">ODKRYWCA SZLAKU</text><text x="200" y="290" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#3d6046">DUSZKA LUBUSZKA</text><g fill="#a6b44c"><path d="m64 163 4-11 4 11 11 4-11 4-4 11-4-11-11-4Zm264 0 4-11 4 11 11 4-11 4-4 11-4-11-11-4Z"/></g>${download ? '<text x="200" y="440" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#45664b">8 miejsc. 8 zagadek. Paszport pełen przygód!</text><text x="200" y="465" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#6b7a62">Wirtualna odznaka — pamiątka z gry</text>' : ''}</svg>`;
 }
 let mascotData;
 async function embeddedMascot() {
+  if (mascotSrc.startsWith('data:')) return mascotSrc;
   if (mascotData) return mascotData;
-  const response = await fetch('/assets/duszek.png');
+  const response = await fetch(mascotSrc);
   if (!response.ok) throw new Error('Mascot unavailable');
   const blob = await response.blob();
   mascotData = await new Promise((resolve, reject) => {

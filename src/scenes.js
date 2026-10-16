@@ -1,6 +1,7 @@
 import { stages } from './game.js';
 
-export const mascot = (alt = '') => `<img src="/assets/duszek.png" alt="${alt}" width="260" height="245" />`;
+export const mascotSrc = new URL('../assets/duszek.png', import.meta.url).href;
+export const mascot = (alt = '') => `<img src="${mascotSrc}" alt="${alt}" width="260" height="245" />`;
 export const icon = (body, cls='') => `<svg class="${cls}" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
 export const landmarkIcon = (type) => icon(type==='park'||type==='garden'
   ? '<path d="M14 25V12m0 7-5-5m5 2 5-6"/><path d="M7 18C-1 8 9-1 14 5c7-7 17 4 9 11-3 4-6 4-9 2-3 3-6 2-7 0Z"/>'
