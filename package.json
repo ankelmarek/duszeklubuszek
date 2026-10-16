@@ -1,0 +1,13 @@
+{
+  "name": "duszek-lubuszek",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node scripts/build.js",
+    "test": "node test/game.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

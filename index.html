@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7ee" />
+    <meta name="description" content="Osiem miejsc, osiem zagadek i paszport pełen pieczątek. Wyrusz w wirtualną przygodę szlakiem Duszka Lubuszka!" />
+    <title>Szlakiem Duszka Lubuszka — Mały paszport, wielka przygoda</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/src/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#riddle">Przejdź do zagadki</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Duszek Lubuszek — strona główna">
+        <span class="brand-mark" id="brand-mark"></span>
+        <span>duszek<span class="brand-second">lubuszek<span class="brand-dot">.</span></span></span>
+      </a>
+      <div class="header-right">
+        <span class="little-adventure">Małe odkrycia. Wielka przygoda.</span>
+        <button class="icon-button" id="sound-button" aria-label="Włącz czytanie zagadek" aria-pressed="false"></button>
+        <button class="help-button" id="help-button"><span aria-hidden="true">?</span> Jak grać</button>
+      </div>
+    </header>
+    <main class="page-shell">
+      <section class="page-heading" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow"><span></span> SZLAKIEM DUSZKA LUBUSZKA</p>
+          <h1 id="page-title">Mały paszport, <span>wielka przygoda.</span></h1>
+          <p class="intro">Osiem niezwykłych miejsc w Lubuskiem. Osiem zagadek. I Ty!</p>
+        </div>
+        <div class="adventure-stamp" aria-hidden="true"><span>✦</span><div>8 MIEJSC<br /><strong>tyle do odkrycia!</strong></div><span>✦</span></div>
+      </section>
+      <section class="journey-bar" aria-label="Przystanki na szlaku">
+        <nav id="stage-nav" class="stage-nav" aria-label="Wybierz miejsce"></nav>
+        <div class="total-progress"><span class="sparkle" aria-hidden="true">✦</span><div>
+          <div class="progress-label"><strong id="total-count">0 z 8</strong><span>wirtualnych pieczątek</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Zebrane wirtualne pieczątki" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><span id="total-bar"></span></div>
+        </div></div>
+      </section>
+      <section class="game-layout" aria-label="Plansza gry">
+        <aside class="guide-card">
+          <div class="guide-heading"><span class="live-dot"></span> TWÓJ TOWARZYSZ PRZYGODY <span aria-hidden="true">✦</span></div>
+          <div class="guide-body">
+            <div class="ghost-portrait" id="ghost-portrait"></div>
+            <div class="hello-line"><span>Cześć! To ja, Duszek!</span><span aria-hidden="true">✳</span></div>
+            <p class="ghost-message" id="ghost-message"></p>
+            <div class="riddle-box">
+              <div class="riddle-label"><span id="riddle-number"></span><span aria-hidden="true">✧</span></div>
+              <h2 id="riddle" tabindex="-1"></h2>
+              <p class="riddle-instruction" id="riddle-instruction">Znajdź odpowiedź na obrazku i kliknij ją.</p>
+            </div>
+            <button class="hint-button" id="hint-button"><span aria-hidden="true">☀</span> Mała podpowiedź <span class="hint-arrow" aria-hidden="true">→</span></button>
+            <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+            <button class="next-button" id="next-button" hidden></button>
+            <div class="no-rush"><span aria-hidden="true">♡</span> Bez pośpiechu. To Twoja przygoda.</div>
+          </div>
+        </aside>
+        <div class="scene-column">
+          <div class="scene-card">
+            <div class="scene-topline"><div><span class="place-dot"></span><strong id="scene-title"></strong><span class="scene-subtitle" id="scene-subtitle"></span></div><span class="scene-chapter" id="scene-chapter"></span></div>
+            <div class="scene-wrapper" id="scene-wrapper">
+              <div id="scene" class="scene"></div>
+              <div class="scene-note"><span aria-hidden="true">✧</span><span id="scene-note"></span></div>
+              <div id="celebration" class="celebration" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="collection-card passport-card">
+            <div class="collection-heading"><span class="collection-icon" aria-hidden="true">✦</span><div><h3>Twój paszport odkrywcy</h3><p>Każda zagadka to nowa wirtualna pieczątka.</p></div><span class="passport-caption">8 MIEJSC · JEDNA PRZYGODA</span></div>
+            <div id="collection" class="collection-items" aria-label="Paszport wirtualnych pieczątek"></div>
+          </div>
+        </div>
+      </section>
+      <section class="discovery-note"><span class="leaf-icon" aria-hidden="true">❋</span><p id="fun-fact"></p><span class="note-tag">POZNAJ LUBUSKIE</span></section>
+      <section class="family-note">
+        <span class="family-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6h12v12"/></svg></span>
+        <div><h2>A może następnym razem — na żywo?</h2><p>Te pieczątki zbieramy w grze. Na rodzinnej wyprawie zbierzesz osobne pieczątki w książeczce.</p></div>
+        <button class="trail-button" id="trail-button">Poznaj prawdziwy szlak <span aria-hidden="true">→</span></button>
+      </section>
+      <footer class="site-footer"><span>Wirtualna przygoda inspirowana „Szlakiem Duszka Lubuszka”. <span aria-hidden="true">♡</span></span><button id="restart-button">Zacznij od nowa <span aria-hidden="true">↺</span></button></footer>
+    </main>
+    <dialog id="help-dialog" class="modal">
+      <button class="modal-close" data-close aria-label="Zamknij">×</button><div class="modal-symbol">✦</div><p class="eyebrow">WITAJ NA SZLAKU</p><h2>Mały przewodnik odkrywcy</h2>
+      <ol class="help-steps">
+        <li><span>1</span><div><strong>Wybierz przystanek</strong><p>Odwiedź osiem miejsc w dowolnej kolejności. Zacznij tam, gdzie masz ochotę!</p></div></li>
+        <li><span>2</span><div><strong>Rozwiąż zagadkę Duszka</strong><p>Kliknij odpowiedź na obrazku. Możesz też użyć klawiszy Tab i Enter lub Spacji.</p></div></li>
+        <li><span>3</span><div><strong>Zbierz osiem pieczątek</strong><p>Za każdą zagadkę dostaniesz wirtualną pieczątkę. Gdy zapełnisz paszport, odbierzesz odznakę!</p></div></li>
+      </ol>
+      <p class="modal-tip">Nie ma limitu czasu ani kar. Duszek ma dwie podpowiedzi do każdej zagadki. Głośnik włącza czytanie, jeśli przeglądarka je obsługuje.</p>
+      <button class="primary-button" data-close>Ruszamy na szlak <span aria-hidden="true">→</span></button>
+    </dialog>
+    <dialog id="trail-dialog" class="modal">
+      <button class="modal-close" data-close aria-label="Zamknij">×</button><div class="modal-symbol">→</div><p class="eyebrow">POMYSŁ NA RODZINNĄ WYPRAWĘ</p><h2>Duszek czeka też<br />w prawdziwym świecie!</h2>
+      <p>Gra nawiązuje do opisanej akcji „Szlakiem Duszka Lubuszka”. Jej uczestnicy odwiedzają osiem miejsc i zbierają pieczątki w książeczce „Przygody Duszka Lubuszka” autorstwa Artura Andrusa.</p>
+      <p>Wirtualne pieczątki i odznaka są pamiątką z gry. Nie potwierdzają wizyt i nie uprawniają do odbioru maskotki w akcji terenowej.</p>
+      <p>Szczegóły edycji, zasady odbioru maskotki i dostępność miejsc sprawdź z opiekunem u organizatora.</p>
+      <a class="primary-button source-link" href="https://lubuskie.pl/wiadomosci/20624/zwiedzaj-lubuskie-z-duszkiem-lubuszkiem" target="_blank" rel="noopener noreferrer">Informacje o akcji na lubuskie.pl →</a>
+    </dialog>
+    <dialog id="restart-dialog" class="modal small-modal">
+      <div class="modal-symbol">↺</div><h2>Nowa przygoda?</h2><p>Usuniemy wirtualne pieczątki z tego paszportu i rozpoczniemy wyprawę od początku.</p>
+      <div class="modal-actions"><button class="secondary-button" data-close>Gram dalej</button><button class="primary-button" id="confirm-restart">Zaczynam od nowa</button></div>
+    </dialog>
+    <dialog id="finish-dialog" class="modal finish-modal">
+      <button class="modal-close" data-close aria-label="Zamknij">×</button><div id="final-badge" class="final-badge"></div><p class="eyebrow">PASZPORT PEŁEN PRZYGÓD!</p><h2>Osiem miejsc.<br />Tyle dobrych wspomnień!</h2><p>Wszystkie zagadki rozwiązane!<br />Jesteś Odkrywcą Szlaku Duszka Lubuszka.</p>
+      <button id="download-badge" class="primary-button">Zapisz swoją odznakę <span aria-hidden="true">↓</span></button><p id="download-feedback" role="status" aria-live="polite"></p>
+      <button class="text-button" data-close>Jeszcze popatrzę na nasz szlak</button><p class="virtual-label">Odznaka jest pamiątką z gry.</p>
+    </dialog>
+  </body>
+</html>
